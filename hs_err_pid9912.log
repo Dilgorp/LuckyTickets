@@ -16,7 +16,7 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\lib\idea_rt.jar=56272:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\bin -Dfile.encoding=UTF-8 ru.dilgrop.java.luckytickets.LuckyTicketsApp
+Command Line: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\lib\idea_rt.jar=56272:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\bin -Dfile.encoding=UTF-8 LuckyTicketsApp
 
 Host: AMD Ryzen 5 3500U with Radeon Vega Mobile Gfx  , 8 cores, 13G,  Windows 10 , 64 bit Build 18362 (10.0.18362.1082)
 Time: Thu Oct  1 21:44:43 2020 RTZ 4 (ceia) elapsed time: 0.599960 seconds (0d 0h 0m 0s)
@@ -427,7 +427,7 @@ Event: 0.553 Thread 0x0000021884e02e70  363       4       java.util.stream.Abstr
 Event: 0.560 Thread 0x00000218842406e0 nmethod 364 0x00000218f1a8a410 code [0x00000218f1a8a620, 0x00000218f1a8aeb8]
 Event: 0.560 Thread 0x00000218842406e0  391       4       java.lang.Integer::valueOf (32 bytes)
 Event: 0.561 Thread 0x00000218842406e0 nmethod 391 0x00000218f1a8b510 code [0x00000218f1a8b680, 0x00000218f1a8b6f8]
-Event: 0.561 Thread 0x00000218842406e0  407       4       ru.dilgrop.java.luckytickets.generator.SimpleTicketGenerator$$Lambda$16/0x0000000800bb1a60::test (12 bytes)
+Event: 0.561 Thread 0x00000218842406e0  407       4       SimpleTicketGenerator$$Lambda$16/0x0000000800bb1a60::test (12 bytes)
 Event: 0.563 Thread 0x00000218842418f0  432       2       java.util.ArrayList::grow (60 bytes)
 Event: 0.564 Thread 0x00000218842418f0 nmethod 432 0x00000218ea5a0610 code [0x00000218ea5a07e0, 0x00000218ea5a0bf8]
 Event: 0.564 Thread 0x00000218842418f0  433       1       java.lang.invoke.VarHandle::isDirect (2 bytes)
@@ -611,7 +611,7 @@ symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Pr
 
 VM Arguments:
 jvm_args: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\lib\idea_rt.jar=56272:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\bin -Dfile.encoding=UTF-8 
-java_command: ru.dilgrop.java.luckytickets.LuckyTicketsApp
+java_command: LuckyTicketsApp
 java_class_path (initial): D:\Studies\Java\Projects\LuckyTickets\target\classes
 Launcher Type: SUN_STANDARD
 
