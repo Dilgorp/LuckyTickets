@@ -1,4 +1,4 @@
-package ru.dilgorp.java.luckytickets.generator;
+package ru.dilgorp.java.luckytickets.ticket;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

@@ -1,10 +1,8 @@
 package ru.dilgorp.java.luckytickets.configuration;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.dilgorp.java.luckytickets.generator.SimpleTicketGenerator;
-import ru.dilgorp.java.luckytickets.generator.TicketGenerator;
+import ru.dilgorp.java.luckytickets.generator.NumberType;
 
 /**
  * Класс конфигурации приложения
@@ -26,13 +24,8 @@ public class AppConfig {
         return NUMBER_LENGTH;
     }
 
-    /**
-     * Возвращает генератор билетов
-     * @param numberLength длина билетов
-     * @return простая реализация генератора билета
-     */
     @Bean
-    public TicketGenerator ticketGenerator(@Qualifier(NUMBER_LENGTH_NAME) int numberLength){
-        return new SimpleTicketGenerator(numberLength);
+    public NumberType numberType(){
+        return NumberType.ALL;
     }
 }
