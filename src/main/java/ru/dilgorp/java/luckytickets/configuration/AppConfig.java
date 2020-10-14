@@ -1,6 +1,7 @@
 package ru.dilgorp.java.luckytickets.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import ru.dilgorp.java.luckytickets.generator.NumberType;
 
@@ -10,6 +11,7 @@ import ru.dilgorp.java.luckytickets.generator.NumberType;
 
 @SuppressWarnings("unused")
 @Configuration
+@ComponentScan("ru.dilgorp.java.luckytickets")
 public class AppConfig {
 
     private static final int NUMBER_LENGTH = 6;

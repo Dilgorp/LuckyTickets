@@ -1,26 +1,35 @@
 package ru.dilgorp.java.luckytickets.generator;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
+import ru.dilgorp.java.luckytickets.builder.TicketBuilder;
+import ru.dilgorp.java.luckytickets.ticket.AbstractTicket;
 import ru.dilgorp.java.luckytickets.ticket.Lucky;
-import ru.dilgorp.java.luckytickets.ticket.Ticket;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Service
-public class SimpleTicketGenerator implements TicketGenerator {
+public class SimpleTicketGenerator implements TicketGenerator, ApplicationContextAware {
 
     private List<Lucky> tickets;
 
     private final int numberLength;
     private final NumberType type;
 
-    @Autowired
+    private ApplicationContext context;
+
     public SimpleTicketGenerator(int numberLength, NumberType type) {
         this.numberLength = numberLength;
         this.type = type;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        context = applicationContext;
     }
 
     /**
@@ -53,8 +62,13 @@ public class SimpleTicketGenerator implements TicketGenerator {
         tickets = IntStream.range(0, (int) Math.pow(10d, numberLength))
                 .parallel()
                 .filter(this::filterByType)
-                .mapToObj(n -> new Ticket(numberLength, n))
-                .filter(Ticket::isLucky)
+                .mapToObj(
+                        n -> {
+                            TicketBuilder builder = context.getBean("ticketBuilder", TicketBuilder.class);
+                            return builder.setNumberLength(numberLength).setNumber(n).build();
+                        }
+                )
+                .filter(AbstractTicket::isLucky)
                 .collect(Collectors.toList());
     }
 
