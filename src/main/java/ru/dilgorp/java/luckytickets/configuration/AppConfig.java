@@ -3,7 +3,11 @@ package ru.dilgorp.java.luckytickets.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import ru.dilgorp.java.luckytickets.generator.NumberType;
+import ru.dilgorp.java.luckytickets.filter.Filter;
+import ru.dilgorp.java.luckytickets.filter.impl.AllTickets;
+import ru.dilgorp.java.luckytickets.filter.impl.DivisibleByFiveTickets;
+import ru.dilgorp.java.luckytickets.filter.impl.EvenTickets;
+import ru.dilgorp.java.luckytickets.filter.impl.OddTickets;
 
 /**
  * Класс конфигурации приложения
@@ -18,16 +22,18 @@ public class AppConfig {
     private static final String NUMBER_LENGTH_NAME = "ru.dilgorp.java.luclytickets.number_length";
 
     /**
-     *
      * @return длина билета
      */
     @Bean(NUMBER_LENGTH_NAME)
-    public int numberLength(){
+    public int numberLength() {
         return NUMBER_LENGTH;
     }
 
+    /**
+     * @return текущий фильтр для билетов
+     */
     @Bean
-    public NumberType numberType(){
-        return NumberType.ALL;
+    public Filter filter() {
+        return new DivisibleByFiveTickets();
     }
 }

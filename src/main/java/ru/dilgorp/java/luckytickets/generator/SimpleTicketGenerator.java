@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 import ru.dilgorp.java.luckytickets.builder.TicketBuilder;
+import ru.dilgorp.java.luckytickets.filter.Filter;
 import ru.dilgorp.java.luckytickets.ticket.AbstractTicket;
 import ru.dilgorp.java.luckytickets.ticket.Lucky;
 
@@ -18,13 +19,13 @@ public class SimpleTicketGenerator implements TicketGenerator, ApplicationContex
     private List<Lucky> tickets;
 
     private final int numberLength;
-    private final NumberType type;
+    private final Filter filter;
 
     private ApplicationContext context;
 
-    public SimpleTicketGenerator(int numberLength, NumberType type) {
+    public SimpleTicketGenerator(int numberLength, Filter filter) {
         this.numberLength = numberLength;
-        this.type = type;
+        this.filter = filter;
     }
 
     @Override
@@ -61,7 +62,7 @@ public class SimpleTicketGenerator implements TicketGenerator, ApplicationContex
     private void computeTickets() {
         tickets = IntStream.range(0, (int) Math.pow(10d, numberLength))
                 .parallel()
-                .filter(this::filterByType)
+                .filter(filter::doFilter)
                 .mapToObj(
                         n -> {
                             TicketBuilder builder = context.getBean("ticketBuilder", TicketBuilder.class);
@@ -70,23 +71,5 @@ public class SimpleTicketGenerator implements TicketGenerator, ApplicationContex
                 )
                 .filter(AbstractTicket::isLucky)
                 .collect(Collectors.toList());
-    }
-
-    private boolean filterByType(int i) {
-        boolean result;
-
-        switch (type) {
-            case EVEN:
-                result = i % 2 == 0;
-                break;
-            case ODD:
-                result = i % 2 != 0;
-                break;
-            default:
-                result = true;
-                break;
-        }
-
-        return result;
     }
 }
