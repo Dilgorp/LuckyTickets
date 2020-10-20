@@ -4,10 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import ru.dilgorp.java.luckytickets.filter.Filter;
-import ru.dilgorp.java.luckytickets.filter.impl.AllTickets;
-import ru.dilgorp.java.luckytickets.filter.impl.DivisibleByFiveTickets;
-import ru.dilgorp.java.luckytickets.filter.impl.EvenTickets;
-import ru.dilgorp.java.luckytickets.filter.impl.OddTickets;
+import ru.dilgorp.java.luckytickets.filter.impl.*;
 
 /**
  * Класс конфигурации приложения
@@ -34,6 +31,6 @@ public class AppConfig {
      */
     @Bean
     public Filter filter() {
-        return new DivisibleByFiveTickets();
+        return new AllTickets();
     }
 }

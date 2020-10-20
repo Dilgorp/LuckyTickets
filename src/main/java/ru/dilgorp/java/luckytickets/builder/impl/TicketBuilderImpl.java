@@ -15,7 +15,7 @@ public class TicketBuilderImpl implements TicketBuilder {
     private int numberLength;
     private int number;
 
-    private Boolean used;
+    private Boolean used = false;
 
     @Override
     public AbstractTicket build() {
