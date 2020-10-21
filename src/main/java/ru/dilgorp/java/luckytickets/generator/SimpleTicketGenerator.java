@@ -1,6 +1,5 @@
 package ru.dilgorp.java.luckytickets.generator;
 
-import org.springframework.stereotype.Service;
 import ru.dilgorp.java.luckytickets.builder.TicketBuilder;
 import ru.dilgorp.java.luckytickets.filter.Filter;
 import ru.dilgorp.java.luckytickets.provider.TicketBuilderProvider;
@@ -13,7 +12,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Service
 public class SimpleTicketGenerator implements TicketGenerator {
 
     private List<Lucky> tickets;
@@ -83,6 +81,17 @@ public class SimpleTicketGenerator implements TicketGenerator {
                         }
                 )
                 .filter(AbstractTicket::isLucky)
+                .filter(this::doFilter)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Выполняет дополнительную фитрацию билетов
+     *
+     * @param lucky билет для фитрации
+     * @return результат фильтрации
+     */
+    protected boolean doFilter(Lucky lucky) {
+        return true;
     }
 }

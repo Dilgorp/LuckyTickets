@@ -2,6 +2,7 @@ package ru.dilgorp.java.luckytickets.ticket;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 public class AbstractTicket implements Lucky {
@@ -29,6 +30,23 @@ public class AbstractTicket implements Lucky {
 
         return Arrays.stream(digits, 0, middle).sum() ==
                 Arrays.stream(digits, middle, digits.length).sum();
+    }
+
+    @Override
+    public Integer getOrdinal() {
+
+        int sum = 0;
+        int[] arr = reverseArray(digits);
+        for(int i = 0; i < arr.length; i++){
+            sum += arr[i] *  (int)Math.pow(10L, i);
+        }
+
+        return sum;
+    }
+
+    @Override
+    public boolean accept(Predicate<HasOrdinal> visitor) {
+        return visitor.test(this);
     }
 
     private int[] getDigits(int number) {
