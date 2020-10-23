@@ -109,10 +109,4 @@ public class TicketTest{
         // then
         assertFalse(ticket.isLucky());
     }
-
-    @Test
-    public void ticketOrdinal(){
-        Lucky ticket = new Ticket(6, 123421);
-        assertEquals(123421, ticket.getOrdinal().intValue());
-    }
 }

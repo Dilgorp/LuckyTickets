@@ -5,8 +5,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import ru.dilgorp.java.luckytickets.filter.Filter;
 import ru.dilgorp.java.luckytickets.filter.impl.*;
-import ru.dilgorp.java.luckytickets.generator.DivisibleBySevenTicketGenerator;
-import ru.dilgorp.java.luckytickets.generator.EvenTicketGenerator;
 import ru.dilgorp.java.luckytickets.generator.TicketGenerator;
 import ru.dilgorp.java.luckytickets.provider.TicketBuilderProvider;
 
@@ -36,13 +34,5 @@ public class AppConfig {
     @Bean
     public Filter filter() {
         return new AllTickets();
-    }
-
-    @Bean
-    public TicketGenerator ticketGenerator(
-            int numberLength, Filter filter,
-            TicketBuilderProvider ticketBuilderProvider){
-
-        return new DivisibleBySevenTicketGenerator(numberLength, filter, ticketBuilderProvider);
     }
 }
