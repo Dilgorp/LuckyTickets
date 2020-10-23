@@ -20,6 +20,9 @@ public class SimpleTicketGeneratorTest {
 
     @Before
     public void initTicketBuilderProvider(){
+//        ticketBuilderProvider = Mockito.mock(TicketBuilderProvider.class);
+//        Mockito.when(ticketBuilderProvider.getTicketBuilder())
+//                .thenReturn(new TicketBuilderImpl());
         ticketBuilderProvider = TicketBuilderImpl::new;
     }
 
