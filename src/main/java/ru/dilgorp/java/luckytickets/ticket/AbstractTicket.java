@@ -32,13 +32,13 @@ public class AbstractTicket implements Lucky {
     }
 
     private int[] getDigits(int number) {
-        int[] digits = new int[numberLength];
+        int[] arrDigits = new int[numberLength];
 
         for (int j = number, count = 0; j > 0; j /= 10) {
-            digits[count++] = j % 10;
+            arrDigits[count++] = j % 10;
         }
 
-        return reverseArray(digits);
+        return reverseArray(arrDigits);
     }
 
     private int[] reverseArray(int[] digits) {

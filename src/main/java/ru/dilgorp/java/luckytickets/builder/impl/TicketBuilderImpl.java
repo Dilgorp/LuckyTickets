@@ -6,8 +6,6 @@ import ru.dilgorp.java.luckytickets.builder.TicketBuilder;
 import ru.dilgorp.java.luckytickets.ticket.AbstractTicket;
 import ru.dilgorp.java.luckytickets.ticket.Ticket;
 
-import javax.annotation.PostConstruct;
-
 @Service("ticketBuilder")
 @Scope("prototype")
 public class TicketBuilderImpl implements TicketBuilder {
@@ -15,7 +13,7 @@ public class TicketBuilderImpl implements TicketBuilder {
     private int numberLength;
     private int number;
 
-    private Boolean used = false;
+    private boolean used;
 
     @Override
     public AbstractTicket build() {
@@ -36,10 +34,5 @@ public class TicketBuilderImpl implements TicketBuilder {
     public TicketBuilder setNumber(int number) {
         this.number = number;
         return this;
-    }
-
-    @PostConstruct
-    private void postConstruct(){
-        used = false;
     }
 }

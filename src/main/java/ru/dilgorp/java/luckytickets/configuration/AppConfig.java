@@ -4,9 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import ru.dilgorp.java.luckytickets.filter.Filter;
-import ru.dilgorp.java.luckytickets.filter.impl.*;
-import ru.dilgorp.java.luckytickets.generator.TicketGenerator;
-import ru.dilgorp.java.luckytickets.provider.TicketBuilderProvider;
+import ru.dilgorp.java.luckytickets.filter.impl.AllTickets;
 
 /**
  * Класс конфигурации приложения

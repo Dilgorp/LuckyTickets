@@ -22,7 +22,9 @@ public class SimpleTicketGenerator implements TicketGenerator {
     private final Filter filter;
     private final TicketBuilderProvider ticketBuilderProvider;
 
-    public SimpleTicketGenerator(int numberLength, Filter filter, TicketBuilderProvider ticketBuilderProvider) {
+    public SimpleTicketGenerator(
+            int numberLength, Filter filter,
+            TicketBuilderProvider ticketBuilderProvider) {
         this.ticketBuilderProvider = ticketBuilderProvider;
         if (numberLength < 2) {
             throw new IllegalArgumentException("Некорректная длина номера билета. Должно быть >= 2");
