@@ -2,6 +2,9 @@ package ru.dilgorp.java.luckytickets.ticket;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 import static org.junit.Assert.*;
 
 /**
@@ -67,11 +70,30 @@ public class TicketTest{
      */
     @Test
     public void ticketConstructorIsCorrectMinNumber(){
+        // given
+        int hash = Objects.hash(6) * 31 + Arrays.hashCode(new int[]{0, 0, 0, 0, 0, 0});
+
         // when
         Lucky ticket = new Ticket(6, 0);
 
         // then
         assertNotNull(ticket);
+        assertEquals(hash, ticket.hashCode());
+    }
+
+    /**
+     * Проверяем, корректность метода hashCode
+     */
+    @Test
+    public void ticketHashCodeCorrect(){
+        // given
+        int hash = Objects.hash(6) * 31 + Arrays.hashCode(new int[]{0, 0, 0, 0, 0, 0});
+
+        // when
+        Lucky ticket = new Ticket(6, 0);
+
+        // then
+        assertEquals(hash, ticket.hashCode());
     }
 
     /**
@@ -84,6 +106,19 @@ public class TicketTest{
 
         // then
         assertNotNull(ticket);
+        assertEquals("999999", ticket.toString());
+    }
+
+    /**
+     * Проверяем, корректность работы метода toString
+     */
+    @Test
+    public void ticketToStringCorrect(){
+        // when
+        Lucky ticket = new Ticket(6, 999999);
+
+        // then
+        assertEquals("999999", ticket.toString());
     }
 
     /**
